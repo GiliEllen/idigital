@@ -21,5 +21,5 @@ app.use("/users", usersRoutes);
 
 
 app.listen(port, () => {
-  console.info(`Server is up and running at http://localhost:${port}`);
+  console.info(`Server is up and running at port ${port}`);
 });
