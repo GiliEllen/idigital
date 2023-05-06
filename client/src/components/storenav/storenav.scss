@@ -1,0 +1,51 @@
+.storenav {
+    height: 4%;
+    background-color: var(--dark-gray);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 .5rem;
+    a {
+        text-decoration: none;
+        color: var(--half-white);
+        height: inherit;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        border-bottom: 4px solid var(--dark-gray);
+        transition: all .2s ease-out;
+    }a:hover {
+        color: var(--full-white);
+        border-bottom-style: solid;
+        border-width: 4px;
+        border-color: var(--light-blue);
+    }
+    form {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        input {
+            font-size: 1.25rem;
+            outline: none;
+            border-radius: .25rem;
+            padding: .25rem .5rem;
+            border: none;
+        }
+        button {
+            border: none;
+            padding: .25rem;
+            border-radius: .25rem;
+            // background: var(--drak-gray-to-light-gray-gradient);
+            background-color: var(--full-white);
+            transition: background-color .2s ease-in;
+            cursor: pointer;
+            img {
+                width: 1.25rem;
+                
+            }
+        }
+        button:hover {
+            background-color: var(--light-blue);
+        }    
+    }
+}
