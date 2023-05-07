@@ -8,7 +8,7 @@ export const connection = mysql.createConnection({
     host: "sql7.freemysqlhosting.net",
     user: "sql7616400",
     password: "IQY4CeQnYn",
-    database: "idigital",
+    database: "sql7616400",
     port: 3306
 });
 var del = connection._protocol._delegateError;
