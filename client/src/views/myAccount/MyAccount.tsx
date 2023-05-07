@@ -22,7 +22,9 @@ const MyAccount = () => {
             const [email, password] = [event.target.elements.email.value, event.target.password.value];
             const { data } = await axios.post(`${CLIENT_URL}/users/login-user`, { email, password });
             if (!data) throw new Error("Couldn't receive data from axios POST '/login-user'");
+            
             if(data.loggedIn === true) {
+                sessionStorage.setItem("id", data.result[0].user_id)
                 navigate("/");
             }
         } catch (error) {

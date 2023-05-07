@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import { connection } from "./DB/databaseSQL";
+
 
 const app = express();
 const port = 4000;

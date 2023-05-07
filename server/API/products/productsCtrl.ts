@@ -1,9 +1,10 @@
-import express from "express";
+import express, { query } from "express";
 import { connection } from "../../DB/databaseSQL";
 
 export async function getProductsByType(req: express.Request, res: express.Response) {
     try {
         const { storeType } = req.body;
+        console.log(storeType)
         if (!storeType) throw new Error("Couldn't receive data from req.body");
 
         if (storeType !== "mac" && storeType !== "iphone" && storeType !== "ipad" &&
@@ -12,11 +13,15 @@ export async function getProductsByType(req: express.Request, res: express.Respo
             FROM products
             WHERE name LIKE '%${storeType}%'`;
 
+
             await connection.query(sql, (error, result) => {
                 try {
                     if(error) throw error;
+                    console.log(result)
                     res.send({result});
                 } catch (error) {
+                    console.log(error.fatal)
+                    console.log(error)
                     res.status(500).send({ error: error.message });
                 }
             })
