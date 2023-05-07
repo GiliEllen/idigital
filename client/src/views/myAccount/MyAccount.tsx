@@ -19,12 +19,14 @@ const MyAccount = () => {
     const handleLogin = async (event: React.FormEvent<HTMLFormElement> | any) => {
         try {
             event.preventDefault();
+            console.log("trying to log in")
             const [email, password] = [event.target.elements.email.value, event.target.password.value];
+            console.log(email, password)
             const { data } = await axios.post(`${CLIENT_URL}/users/login-user`, { email, password });
             if (!data) throw new Error("Couldn't receive data from axios POST '/login-user'");
-            
+            console.log(data)
             if(data.loggedIn === true) {
-                sessionStorage.setItem("id", data.result[0].user_id)
+                sessionStorage.setItem("id", data.userId)
                 navigate("/");
             }
         } catch (error) {

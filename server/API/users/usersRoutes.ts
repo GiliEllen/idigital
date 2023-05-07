@@ -7,7 +7,7 @@ router
     .post("/register-user", registerUser)
     .post("/login-user", loginUser)
     .get("/get-user-by-cookie", getUserByCookie)
-    .post("/get-user-by-id/:userId", getUserById)
+    .get("/get-user-by-id/:userId", getUserById)
     
 
 export default router;

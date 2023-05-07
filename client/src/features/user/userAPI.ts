@@ -19,9 +19,10 @@ export const getUserByCookie = createAsyncThunk(
     'get-user-by-cookie',
     async () => {
         try {
-            const userId = sessionStorage.getItem("userId");
+            const userId = sessionStorage.getItem("id");
+            console.log(userId)
             if (userId !== null) {
-                const { data } = await axios.get(`${CLIENT_URL}/users/get-user-by-id/${userId}`);
+                const { data } = await axios.get(`http://localhost:4000/users/get-user-by-id/${userId}`);
                 if(!data) throw new Error("Couldn't receive data from axios POST '/get-user-by-id' ");
                 const { result } = data;
                 return result[0];
