@@ -5,9 +5,9 @@ dotenv.config()
 const SQL_PASSWORD = process.env.JWT_SECRET
  
 export const connection = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "idigital-admin",
-    password: "Safe123456!",
+    host: "sql7.freemysqlhosting.net",
+    user: "sql7616400",
+    password: "IQY4CeQnYn",
     database: "idigital",
     port: 3306
 });
