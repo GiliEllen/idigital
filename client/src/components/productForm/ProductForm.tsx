@@ -6,6 +6,7 @@ import { getUserByCookie } from "../../features/user/userAPI"
 import { User } from "../../features/user/userModel"
 import { selectUser } from "../../features/user/userSlice"
 import { ProductColors, ProductInfo } from "../../views/product/Product"
+import { CLIENT_URL } from "../../util/util"
 
 interface ProductFormProps {
     productInfo: Array<ProductInfo>
@@ -46,7 +47,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
                 if (productName !== "Mac Mini" && productName !== "Mac Pro" && productName !== "Mac Studio") {
 
                     const [productColor, productModel] = [event.target.elements.productColor.value, event.target.elements.productModel.value];
-                    const { data } = await axios.post("/products/get-product-id", { productColor, productModel, storeType });
+                    const { data } = await axios.post(`${CLIENT_URL}/products/get-product-id`, { productColor, productModel, storeType });
                     if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-id'");
                     const { prodId } = data;
                     const { product_id } = prodId;
@@ -54,7 +55,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
                 } else {
 
                     const productModel = event.target.elements.productModel.value;
-                    const { data } = await axios.post("/products/get-product-id", { productName, productModel, storeType });
+                    const { data } = await axios.post(`${CLIENT_URL}/products/get-product-id`, { productName, productModel, storeType });
                     if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-id'");
                     const { prodId } = data;
                     const { product_id } = prodId;
@@ -64,7 +65,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
             } else if (storeType === "iphone" || storeType === "ipad" || storeType === "apple_tv") {
 
                 const [productColor, productStorage] = [event.target.elements.productColor.value, event.target.elements.storage.value];
-                const { data } = await axios.post("/products/get-product-id", { productColor, productStorage, storeType, productName });
+                const { data } = await axios.post(`${CLIENT_URL}/products/get-product-id`, { productColor, productStorage, storeType, productName });
                 if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-id'");
                 const { prodId } = data;
                 const { product_id } = prodId;
@@ -73,7 +74,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
             } else if (storeType === "apple_watch") {
 
                 const [productColor, productScreenSize] = [event.target.elements.productColor.value, event.target.elements.screenSize.value];
-                const { data } = await axios.post("/products/get-product-id", { productColor, productScreenSize, storeType, productName });
+                const { data } = await axios.post(`${CLIENT_URL}/products/get-product-id`, { productColor, productScreenSize, storeType, productName });
                 if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-id'");
                 const { prodId } = data;
                 const { product_id } = prodId;
@@ -83,7 +84,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
 
                 const productColor = event.target.elements.productColor.value;
                 console.log({productColor, storeType, productName});
-                const { data } = await axios.post("/products/get-product-id", { productColor, storeType, productName });
+                const { data } = await axios.post(`${CLIENT_URL}/products/get-product-id`, { productColor, storeType, productName });
                 if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-id'");
                 console.log(data);
                 const { prodId } = data;
@@ -92,7 +93,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
 
             } else {
 
-                const { data } = await axios.post("/products/get-product-id", { productName, storeType });
+                const { data } = await axios.post(`${CLIENT_URL}/products/get-product-id`, { productName, storeType });
                 if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-id'");
                 const { prodId } = data;
                 const { product_id } = prodId;
@@ -106,7 +107,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
     const addToCart = async () => {
         try {
             if (productId !== null) {
-                const { data } = await axios.post("/products/add-to-cart", { productId, userId });
+                const { data } = await axios.post(`${CLIENT_URL}/products/add-to-cart`, { productId, userId });
                 if (!data) throw new Error("Couldn't receive data from axios POST '/add-to-cart'");
                 navigate("/cart");
             }
@@ -118,7 +119,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ productInfo, productColors })
 
     const getProductPreviewImg = async () => {
         try {
-            const { data } = await axios.post("/products/get-product-preview-img", { productName });
+            const { data } = await axios.post(`${CLIENT_URL}/products/get-product-preview-img`, { productName });
             if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-preview-img'");
             const { result } = data;
             const { preview_img } = result[0];

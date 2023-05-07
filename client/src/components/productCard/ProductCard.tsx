@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Product } from "../../views/products/productsHelper";
+import { CLIENT_URL } from "../../util/util";
 
 interface ProductCardProps {
     product: Product
@@ -13,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     const getProductPreviewImg = async () => {
         try {
-            const { data } = await axios.post("/products/get-product-preview-img", { productName });
+            const { data } = await axios.post(`${CLIENT_URL}/products/get-product-preview-img`, { productName });
             if (!data) throw new Error("Coiuldn't receive data from axios POST '/get-product-preview-img'");
             const { result } = data;
             const { preview_img } = result[0];

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react"
 import { useParams } from "react-router-dom";
+import { CLIENT_URL } from "../../util/util";
 
 
 const SearchProducts = () => {
@@ -9,7 +10,7 @@ const SearchProducts = () => {
 
     const getProductsBySearch = async () => {
         try {
-            const { data } = await axios.post("/products/get-products-by-search", { userSearch });
+            const { data } = await axios.post(`${CLIENT_URL}/products/get-products-by-search`, { userSearch });
             if(!data) throw new Error("Couldn't receive data from axios POST '/products/get-products-by-search' ");
             console.log(data);
         } catch (error) {

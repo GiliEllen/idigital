@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/hooks";
 import { getUserByCookie } from "../../features/user/userAPI";
+import { CLIENT_URL } from "../../util/util";
 
 
 const Registration = () => {
@@ -27,7 +28,7 @@ const Registration = () => {
             [firstName, lastName, identifierNumber, phoneNumber, email, confirmEmail, city, streetAddress, houseNumber, postalCode, password, confirmPassword] =
                 [firstName.value, lastName.value, identifierNumber.value, phoneNumber.value, email.value, confirmEmail.value, city.value, streetAddress.value, houseNumber.value, postalCode.value, password.value, confirmPassword.value];
 
-            const { data } = await axios.post('/users/register-user', {
+            const { data } = await axios.post(`${CLIENT_URL}/users/register-user`, {
                 firstName, lastName, identifierNumber,
                 phoneNumber, email, confirmEmail, city,
                 streetAddress, houseNumber, postalCode,

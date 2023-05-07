@@ -11,7 +11,7 @@ const port = 4000;
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
-
+ 
 dotenv.config();
 
 import productsRoutes from "./API/products/productsRoutes";

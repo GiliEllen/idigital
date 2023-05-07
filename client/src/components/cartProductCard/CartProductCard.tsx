@@ -5,6 +5,7 @@ import { CartProduct } from "../../views/cart/Cart"
 
 import trashIcon from "../../assets/svg/cart/trashIcon.svg";
 import xIcon from "../../assets/svg/cart/xIcon.svg";
+import { CLIENT_URL } from "../../util/util";
 
 export interface CartProductCardProps {
     product: CartProduct
@@ -20,7 +21,7 @@ const CartProductCard: React.FC<CartProductCardProps> = ({ product }) => {
         try {
             const productId = event.target.id;
             const userId = user.user_id;
-            const { data } = await axios.delete("/products/delete-product-from-cart", { data: { userId, productId } });
+            const { data } = await axios.delete(`${CLIENT_URL}/products/delete-product-from-cart`, { data: { userId, productId } });
             if (!data) throw new Error("Couldn't receive data from axios DELETE '/delete-product-from-cart'");
             window.location.reload();
         } catch (error) {

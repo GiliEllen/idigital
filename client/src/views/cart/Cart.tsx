@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import CartProductCard from "../../components/cartProductCard/CartProductCard";
 import { getUserByCookie } from "../../features/user/userAPI";
 import { selectUser } from "../../features/user/userSlice"
+import { CLIENT_URL } from "../../util/util";
 
 export interface CartProduct {
     color: string,
@@ -40,7 +41,7 @@ const Cart = () => {
         try {
             if (user) {
                 const userId = user.user_id;
-                const { data } = await axios.post("/products/get-products-price-cart", { userId });
+                const { data } = await axios.post(`${CLIENT_URL}/products/get-products-price-cart`, { userId });
                 if (!data) throw new Error("Couldn't receive data from axios POST '/get-products-price-cart'");
                 const sum = data?.reduce((accumulator: any, object: any) => {
                     return accumulator + object.price;
@@ -61,7 +62,7 @@ const Cart = () => {
         try {
             if (user) {
                 const userId = user.user_id;
-                const { data } = await axios.delete("/products/delete-products-from-cart", { data: { userId } });
+                const { data } = await axios.delete(`${CLIENT_URL}/products/delete-products-from-cart`, { data: { userId } });
                 if(!data) throw new Error("Couldn't receive data from axios DELETE '/delete-products-form-cart' ");
             }
         } catch (error) {

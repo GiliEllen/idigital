@@ -13,6 +13,7 @@ import ipadHeader from "../../assets/images/productsHeader/ipadHeader.jpeg";
 import applewatchHeader from "../../assets/images/productsHeader/applewatchHeader.jpeg";
 import airpodsHeader from "../../assets/images/productsHeader/airpodsHeader.jpeg";
 import appletvHeader from "../../assets/images/productsHeader/appletvHeader.jpeg";
+import { CLIENT_URL } from "../../util/util";
 
 const Products = () => {
     const { storeType } = useParams();
@@ -26,11 +27,11 @@ const Products = () => {
 
     useEffect(() => {
         dispatch(getUserByCookie());
-    }, [])
+    }, []) 
 
     async function getProductsByType(storeType: string) {
         try {
-            const { data } = await axios.post("/products/get-products-by-type", { storeType });
+            const { data } = await axios.post(`${CLIENT_URL}/products/get-products-by-type`, { storeType });
             if (!data) throw new Error("Couldn't receive data from axios '/get-products-by-type' ");
             const { result } = data;
             const products = await extractUniqueProductArray(result, 'name');

@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../app/hooks";
 import ProductForm from "../../components/productForm/ProductForm";
 import { getUserByCookie } from "../../features/user/userAPI";
 import { extractUniqueProductArray } from "../products/productsHelper";
+import { CLIENT_URL } from "../../util/util";
 
 export interface ProductInfo {
     discription: string,
@@ -42,7 +43,7 @@ const Product = () => {
 
     const getProductInformation = async () => {
         try {
-            const { data } = await axios.post("/products/get-product-info", { productName, storeType });
+            const { data } = await axios.post(`${CLIENT_URL}/products/get-product-info`, { productName, storeType });
             if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-info' ");
             const { result } = data;
             setProductInfo(result);
@@ -53,7 +54,7 @@ const Product = () => {
 
     const getProductColors = async () => {
         try {
-            const { data } = await axios.post("/products/get-product-colors", { productName, storeType });
+            const { data } = await axios.post(`${CLIENT_URL}/products/get-product-colors`, { productName, storeType });
             if (!data) throw new Error("Couldn't receive data from axios POST '/get-product-colors' ");
             const { result } = data;
             setProductColors(result);

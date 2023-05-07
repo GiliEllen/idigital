@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/hooks";
 import { getUserByCookie } from "../../features/user/userAPI";
+import { CLIENT_URL } from "../../util/util";
 
 
 
@@ -19,7 +20,7 @@ const MyAccount = () => {
         try {
             event.preventDefault();
             const [email, password] = [event.target.elements.email.value, event.target.password.value];
-            const { data } = await axios.post("/users/login-user", { email, password });
+            const { data } = await axios.post(`${CLIENT_URL}/users/login-user`, { email, password });
             if (!data) throw new Error("Couldn't receive data from axios POST '/login-user'");
             if(data.loggedIn === true) {
                 navigate("/");

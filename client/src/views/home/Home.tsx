@@ -7,6 +7,7 @@ import SpecialOffers from '../../components/specialOffers/SpecialOffers';
 import Sidenav from '../../components/storenav/Storenav';
 import { getUserByCookie } from '../../features/user/userAPI';
 import axios from 'axios';
+import { CLIENT_URL } from '../../util/util';
 
 const Home = () => {
   
@@ -18,7 +19,7 @@ const Home = () => {
 
   async function handleClick() {
     try {
-      const {data} = await axios.get("/test");
+      const {data} = await axios.get(`${CLIENT_URL}/test`);
       console.log(data)
     } catch (error) {
       console.log(error)
