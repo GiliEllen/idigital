@@ -44,27 +44,33 @@ const Products = () => {
     const setHeaderImage = (storeType: string) => {
         try {
             if (storeType === "mac") {
-                setStoreHeader(macHeader);
+                // setStoreHeader(macHeader);
+                setStoreHeader("https://imgtr.ee/images/2023/06/12/Qk6jc.jpg");
                 setStoreHeaderTitle("כל דגמי Mac לרכישה אונליין");
                 setStoreHeaderText("iDigital - המומחים של Apple בישראל.");
             } else if (storeType === "iphone") {
-                setStoreHeader(iphoneHeader);
+                // setStoreHeader(iphoneHeader);
+                setStoreHeader("https://imgtr.ee/images/2023/06/12/Qkr5n.jpg");
                 setStoreHeaderTitle("סדרת iPhone 14");
                 setStoreHeaderText("");
             } else if (storeType === "ipad") {
-                setStoreHeader(ipadHeader);
+                // setStoreHeader(ipadHeader);
+                setStoreHeader("https://imgtr.ee/i/ipadheader.Qkd2r");
                 setStoreHeaderTitle("כל דגמי iPad לרכישה אונליין");
                 setStoreHeaderText("iDigital - המומחים של Apple בישראל.");
             } else if (storeType === "apple_watch") {
+                setStoreHeader("https://imgtr.ee/images/2023/06/12/QkYCJ.jpg");
                 setStoreHeader(applewatchHeader);
                 setStoreHeaderTitle("כל דגמי Apple Watch לרכישה אונליין");
                 setStoreHeaderText("iDigital - המומחים של Apple בישראל.");
             } else if (storeType === "air_pods") {
-                setStoreHeader(airpodsHeader);
+                // setStoreHeader(airpodsHeader);
+                setStoreHeader("https://imgtr.ee/images/2023/06/12/QkTDx.jpg");
                 setStoreHeaderTitle("AirPods ללא חוטים. ללא מאמץ. חוויה קסומה מאי פעם.");
                 // setStoreHeaderText("");
             } else if (storeType === "apple_tv") {
                 setStoreHeader(appletvHeader);
+                setStoreHeader("https://imgtr.ee/images/2023/06/12/QkZgi.jpg");
                 setStoreHeaderTitle("כל דגמי Apple TV לרכישה אונליין");
                 setStoreHeaderText("iDigital - המומחים של Apple בישראל.");
             } else {
